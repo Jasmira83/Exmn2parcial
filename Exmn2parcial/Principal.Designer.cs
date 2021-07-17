@@ -29,6 +29,7 @@ namespace Exmn2parcial
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,10 +54,12 @@ namespace Exmn2parcial
             this.btn_cancelar = new System.Windows.Forms.Button();
             this.btn_confirmar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_datos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -167,6 +170,7 @@ namespace Exmn2parcial
             this.txt_nomedicamento.Name = "txt_nomedicamento";
             this.txt_nomedicamento.Size = new System.Drawing.Size(205, 20);
             this.txt_nomedicamento.TabIndex = 7;
+            this.txt_nomedicamento.TextChanged += new System.EventHandler(this.txt_nomedicamento_TextChanged);
             // 
             // txt_precio
             // 
@@ -310,6 +314,10 @@ namespace Exmn2parcial
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -336,6 +344,7 @@ namespace Exmn2parcial
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_datos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,5 +376,6 @@ namespace Exmn2parcial
         private System.Windows.Forms.ComboBox cbx_categoria;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button txt_Salir;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -39,9 +39,93 @@ namespace Exmn2parcial
 
             total();
 
-        
+
+            bool error = false;
+
+            foreach(char caracter in txt_cliente.Text)
+            {
+               if(char.IsDigit(caracter))
+                {
+                    error = true;
+                    break;
+                }
+            }
+            //verificar la condicion de error
+            if(error)
+            {
+                errorProvider1.SetError(txt_cliente, "No se admiten numeros");
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+
+           
+
+            foreach (char caracter in txt_nomedicamento.Text)
+            {
+                if (char.IsDigit(caracter))
+                {
+                    error = true;
+                    break;
+                }
+            }
+            //verificar la condicion de error
+            if (error)
+            {
+                errorProvider1.SetError(txt_cliente, "No se admiten numeros");
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+
+            //.............................................................
+
+            ////foreach (num caracter in txt_cliente.Text)
+            ////{
+            ////    int num;
+            ////    if (!int.TryParse(txt_cantidada.Text, out num))
+            ////    {
+            ////        error = true;
+            ////        break;
+            ////    }
+            ////}
+            ////verificar la condicion de error
+            //int num;
+            //if (!int.TryParse(txt_cantidada.Text, out num))
+            //{
+            //    errorProvider1.SetError(txt_cantidada, "No se admiten letras");
+            //}
+            //else
+            //{
+            //    errorProvider1.Clear();
+            //}
+
+            //if (!int.TryParse(txt_precio.Text, out num))
+            //{
+            //    errorProvider1.SetError(txt_precio, "No se admiten letras");
+            //}
+            //else
+            //{
+            //    errorProvider1.Clear();
+            //}
 
         }
+
+        public void total()
+
+        {
+            Decimal total = 0;
+            foreach (DataGridViewRow row in dg_datos.Rows)
+            {
+                total = (Convert.ToDecimal(row.Cells["Cantidad"].Value) * Convert.ToDecimal(row.Cells["Precio"].Value) + total);
+            }
+
+            txt_total.Text = total.ToString();
+        }
+
+
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
@@ -59,19 +143,7 @@ namespace Exmn2parcial
             txt_total.Text = "";
         }
 
-     
-
-        public void total()
-
-        {
-            Decimal total = 0;
-            foreach (DataGridViewRow row in dg_datos.Rows)
-            {
-                total = (Convert.ToDecimal(row.Cells["Cantidad"].Value) * Convert.ToDecimal(row.Cells["Precio"].Value) + total);
-            }
-
-            txt_total.Text = total.ToString();
-        }
+    
 
         private void txt_Salir_Click(object sender, EventArgs e)
         {
@@ -83,5 +155,11 @@ namespace Exmn2parcial
                 Application.Exit();
             }
         }
+
+        private void txt_nomedicamento_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
